@@ -22,7 +22,7 @@ class AppleTest(unittest.TestCase):
 
     def test_search(self):
 
-        limit = 1400
+        limit = 1400 /
 
         home_page_object = home_page(self.driver)
         explore_page = ExplorePage(self.driver)
