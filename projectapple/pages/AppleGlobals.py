@@ -1,3 +1,4 @@
 url_base = "https://www.apple.com/"
 search_text = any
-limit = 1400
+limit1 = 1400
+limit2 = 150

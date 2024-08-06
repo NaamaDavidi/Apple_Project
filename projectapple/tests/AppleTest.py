@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from projectapple.pages import Apple_home_page
 from projectapple.pages.AppleBaseSelenium import ProjectBaseSelenium
-from projectapple.pages.AppleGlobals import url_base, limit
+from projectapple.pages.AppleGlobals import url_base, limit1, limit2
 from projectapple.pages.AppleProductPage import Product_Page
 from projectapple.pages.Apple_home_page import home_page
 from projectapple.pages.AppleExplorePage import ExplorePage
@@ -27,7 +27,7 @@ class AppleTest(unittest.TestCase):
         time.sleep(3)
         self.explore_page.select_item_macbook()
         price = self.product_page.find_price_offer_macbook()
-        assert price>limit,"the price is lower than 1400 not as expected"
+        assert price>limit1,"the price is lower than 1400 not as expected"
 
 
     def test_search_airpods(self):
@@ -35,7 +35,17 @@ class AppleTest(unittest.TestCase):
         time.sleep(3)
         self.explore_page.select_item_airpods()
         price = self.product_page.find_price_offer_airpods()
-        assert price > limit, "the price is lower than 1400 not as expected"
+        assert price < limit2, "the price is higher than 150 not as expected"
+
+
+    def test_search_iphone(self):
+        self.home_page_object.create_search("iphone")
+        time.sleep(3)
+        self.explore_page.select_item_iphone()
+        price = self.product_page.find_price_offer_iphone()
+        assert price < limit1, "the price is cheaper than first item"
+
+
     def tearDown(self):
         print ('into tear down')
         self.base.selenium_end(self.driver)
