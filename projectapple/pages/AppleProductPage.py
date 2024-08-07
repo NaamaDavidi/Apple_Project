@@ -2,6 +2,8 @@ import time
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Product_Page():
@@ -13,7 +15,8 @@ class Product_Page():
         self.find_price_iphone ="p[class='welcome__lockup-primary-copy has-dynamic-content show']"
 
     def find_price_offer_macbook(self):
-        time.sleep(3)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR,self.find_price_macbook)))
+        time.sleep(3)  # added since sometimes we still have stability issues at this point
         Price_Offer = self.driver.find_element(By.CSS_SELECTOR,self.find_price_macbook)
         price_Offer_text = Price_Offer.text
         print(f'price found the value is {price_Offer_text}')
@@ -41,7 +44,7 @@ class Product_Page():
 
 
     def find_price_offer_iphone(self):
-        time.sleep(3)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(By.CSS_SELECTOR,self.find_price_iphone))
         Price_Offer = self.driver.find_element(By.CSS_SELECTOR,self.find_price_iphone)
         price_Offer_text = Price_Offer.text
         print(f'price found the value is {price_Offer_text}')

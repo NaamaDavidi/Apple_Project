@@ -1,7 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from projectapple.pages.AppleGlobals import item1, item2, item3
 
 
@@ -15,6 +16,7 @@ class ExplorePage():
 
     def select_item_macbook(self):
         click_item = self.driver.find_elements(By.PARTIAL_LINK_TEXT,item1)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(click_item[0]))
         click_item[0].click()
 
     def select_item_airpods(self):
