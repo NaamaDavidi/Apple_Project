@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from projectapple.pages import Apple_home_page
 from projectapple.pages.AppleBaseSelenium import ProjectBaseSelenium
-from projectapple.pages.AppleGlobals import url_base, limit1, limit2
+from projectapple.pages.AppleGlobals import url_base, limit1, limit2, item1, item3
 from projectapple.pages.AppleProductPage import Product_Page
 from projectapple.pages.Apple_home_page import home_page
 from projectapple.pages.AppleExplorePage import ExplorePage
@@ -43,7 +43,8 @@ class AppleTest(unittest.TestCase):
         time.sleep(3)
         self.explore_page.select_item_iphone()
         price = self.product_page.find_price_offer_iphone()
-        assert price < limit1, "the price is cheaper than first item"
+        assert price > limit1, f"the price of {item3} is cheaper than {item1}"
+
 
 
     def tearDown(self):

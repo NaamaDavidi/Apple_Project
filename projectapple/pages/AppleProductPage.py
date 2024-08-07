@@ -42,7 +42,7 @@ class Product_Page():
 
     def find_price_offer_iphone(self):
         time.sleep(3)
-        Price_Offer = self.driver.find_elements(By.CSS_SELECTOR,self.find_price_iphone)
+        Price_Offer = self.driver.find_element(By.CSS_SELECTOR,self.find_price_iphone)
         price_Offer_text = Price_Offer.text
         print(f'price found the value is {price_Offer_text}')
         price_as_str = price_Offer_text
