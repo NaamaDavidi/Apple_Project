@@ -3,7 +3,9 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
 
 
-
+"""
+This class is responsible for organizing the Selenium code lines.
+"""
 class ProjectBaseSelenium():
 
 
@@ -18,6 +20,6 @@ class ProjectBaseSelenium():
 
 
 
-    def selenium_end(self,driver):
+    def selenium_end(self, driver):
         driver.close()
         print('test end')
